@@ -8,10 +8,22 @@
   <script>
     // Your JavaScript goes here!
 
-    function computerPlay {
+    let playerSelection = prompt("Please enter rock, paper, or scissors").toLowerCase();
 
+    while (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors" ) {
+	playerSelection = prompt("Opps, please only enter rock, paper, or scissors").toLowerCase();
     }
+
+
+
+    function computerPlay() {
+        const computerChoices = ["rock", "paper", "scissors"];
+        const computerRandom = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+        return computerRandom;
+    }
+
     
+
   </script>
 </body>
 </html>
