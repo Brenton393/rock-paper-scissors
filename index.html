@@ -6,23 +6,27 @@
 </head>
 <body>
   <script>
-    // Your JavaScript goes here!
+    // player selection
 
-    let playerSelection = prompt("Please enter rock, paper, or scissors").toLowerCase();
+    function playerSelection() {
 
-    while (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors" ) {
-	playerSelection = prompt("Opps, please only enter rock, paper, or scissors").toLowerCase();
-    }
+        let playerChoice = prompt("Please enter rock, paper, or scissors").toLowerCase();
 
+	    while (!(playerChoice == "rock") && !(playerChoice == "paper") && !(playerChoice == "scissors")) {
+            alert("Please enter a valid choice")
+            playerChoice = prompt("Please enter rock, paper, or scissors").toLowerCase();
+            }
+        return playerChoice;
 
+    }   
+  
+    // computer selection
 
-    function computerPlay() {
-        const computerChoices = ["rock", "paper", "scissors"];
-        const computerRandom = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+    function computerSelection() {
+        const computerChoice = ["rock", "paper", "scissors"];
+        const computerRandom = computerChoice[Math.floor(Math.random() * computerChoice.length)];
         return computerRandom;
     }
-
-    
 
   </script>
 </body>
