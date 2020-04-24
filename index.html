@@ -8,7 +8,7 @@
   <script>
     // player selection
 
-    function playerSelection() {
+    function playerPlay() {
 
         let playerChoice = prompt("Please enter rock, paper, or scissors").toLowerCase();
 
@@ -22,12 +22,40 @@
   
     // computer selection
 
-    function computerSelection() {
+    function computerPlay() {
         const computerChoice = ["rock", "paper", "scissors"];
         const computerRandom = computerChoice[Math.floor(Math.random() * computerChoice.length)];
+        //console.log("computerplay called")
         return computerRandom;
     }
 
+    // game round
+
+    //const playerSelection = playerPlay();
+    //const computerSelection = computerPlay();
+    playRound(playerPlay(), computerPlay());
+    //playRound(playerSelection, computerSelection);
+
+   function playRound(playerSelection, computerSelection) {
+       alert(playerSelection + " " + computerSelection);
+       if (playerSelection == "rock"){
+            if (computerSelection == "rock"){ alert("tie");}
+            else if (computerSelection == "paper"){ alert("lose");}
+            else if (computerSelection == "scissors"){ alert("win");}
+
+       } 
+        else if(playerSelection == "paper") {
+            if (computerSelection == "rock"){ alert("win");}
+            else if (computerSelection == "paper"){ alert("tie");}
+            else if (computerSelection == "scissors"){ alert("lose");}
+        }
+        else if(playerSelection == "scissors") {
+            if (computerSelection == "rock"){ alert("lose");}
+            else if (computerSelection == "paper"){ alert("win");}
+            else if (computerSelection == "scissors"){ alert("tie");}
+        }
+     }
+  
   </script>
 </body>
 </html>
