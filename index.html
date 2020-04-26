@@ -6,10 +6,10 @@
 </head>
 <body>
   <script>
-    // player selection
+
+    // FUNCTIONS
 
     function playerPlay() {
-
         let playerChoice = prompt("Please enter rock, paper, or scissors").toLowerCase();
 
 	    while (!(playerChoice == "rock") && !(playerChoice == "paper") && !(playerChoice == "scissors")) {
@@ -20,42 +20,82 @@
 
     }   
   
-    // computer selection
-
     function computerPlay() {
         const computerChoice = ["rock", "paper", "scissors"];
         const computerRandom = computerChoice[Math.floor(Math.random() * computerChoice.length)];
-        //console.log("computerplay called")
         return computerRandom;
     }
 
-    // game round
-
-    //const playerSelection = playerPlay();
-    //const computerSelection = computerPlay();
-    playRound(playerPlay(), computerPlay());
-    //playRound(playerSelection, computerSelection);
-
-   function playRound(playerSelection, computerSelection) {
-       alert(playerSelection + " " + computerSelection);
+    function playRound(playerSelection, computerSelection) {
+       alert(playerSelection + " vs " + computerSelection);
        if (playerSelection == "rock"){
-            if (computerSelection == "rock"){ alert("tie");}
-            else if (computerSelection == "paper"){ alert("lose");}
-            else if (computerSelection == "scissors"){ alert("win");}
-
+            if (computerSelection == "rock"){ outcome = "tie";}
+            else if (computerSelection == "paper"){ outcome = "lose";}
+            else if (computerSelection == "scissors"){ outcome = "win";}
        } 
         else if(playerSelection == "paper") {
-            if (computerSelection == "rock"){ alert("win");}
-            else if (computerSelection == "paper"){ alert("tie");}
-            else if (computerSelection == "scissors"){ alert("lose");}
+            if (computerSelection == "rock"){ outcome = "win";}
+            else if (computerSelection == "paper"){ outcome = "tie";}
+            else if (computerSelection == "scissors"){ outcome = "lose";}
         }
         else if(playerSelection == "scissors") {
-            if (computerSelection == "rock"){ alert("lose");}
-            else if (computerSelection == "paper"){ alert("win");}
-            else if (computerSelection == "scissors"){ alert("tie");}
+            if (computerSelection == "rock"){ outcome = "lose";}
+            else if (computerSelection == "paper"){ outcome = "win";}
+            else if (computerSelection == "scissors"){ outcome = "tie";}
         }
+
+        return (playerSelection, computerSelection, outcome);
+
      }
-  
+
+     function gameOutcome(outcome, playerSelection, computerSelection) {
+        if (outcome == "win") {
+            alert(`You Win! ${playerSelection} beats ${computerSelection}`)
+            return win = ++win;
+        }
+        else if (outcome == "lose"){
+            alert(`You Lose! ${computerSelection} beats ${playerSelection}`)
+            return lose = ++lose;
+        }
+        else if (outcome == "tie") {
+            alert(`It's a Tie! ${playerSelection} ties with ${computerSelection}`)
+            return tie = ++tie
+        }
+    }
+
+    // GAME 
+
+    let rounds = 0;
+    let outcome = "";
+    let win = 0;
+    let lose = 0;
+    let tie = 0;
+
+    while (rounds < 5){
+        
+        const playerSelection = playerPlay();
+        const computerSelection = computerPlay();
+        playRound(playerSelection, computerSelection);
+        gameOutcome(outcome, playerSelection, computerSelection); 
+
+        rounds = ++rounds;
+        alert(`Round ${rounds}: won ${win}, lost ${lose}, tied ${tie}`);
+    
+    }
+
+    // GAME END
+
+    if (win > lose) {
+        alert(`You Won!: won ${win}, lost ${lose}, tied ${tie}`)
+    }
+    else if (lose > win) {
+        alert(`You Lost!: won ${win}, lost ${lose}, tied ${tie}`)
+    }
+    else if (lose == win) {
+        alert(`You Tied!: won ${win}, lost ${lose}, tied ${tie}`)
+    }
+
   </script>
+
 </body>
 </html>
