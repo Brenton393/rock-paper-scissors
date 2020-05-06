@@ -32,7 +32,6 @@
 <body>
 
     <h1>Rock. Paper. Scissors.</h1>
-    <h4 id="scoreBoard"> You vs Computer - 5 Rounds! </h2>
     <button id="rock">rock</button>
     <button id="paper">paper</button>
     <button id="scissors">scissors</button>
@@ -46,8 +45,17 @@
 
     // FUNCTIONS
 
-    function playerPlay(playerChoice) { 
+    function playerPlay(playerChoice) { // replace with buttons
+        /* 
+        let playerChoice = prompt("Please enter rock, paper, or scissors").toLowerCase();
+
+	    while (!(playerChoice == "rock") && !(playerChoice == "paper") && !(playerChoice == "scissors")) {
+            alert("Please enter a valid choice")
+            playerChoice = prompt("Please enter rock, paper, or scissors").toLowerCase();
+            }
+        */
         return playerChoice;
+
     }   
   
     function computerPlay() {
@@ -57,6 +65,12 @@
     }
 
     function playRound(playerSelection, computerSelection) { 
+        // console.log(playerSelection + " vs " + computerSelection);
+
+       /* const div = document.querySelector('div');
+        const h2 = document.createElement('h2');
+        h2.textContent = playerSelection + " vs " + computerSelection;
+        div.appendChild(h2); */
 
        if (playerSelection == "rock"){
             if (computerSelection == "rock"){ outcome = "tie";}
@@ -80,7 +94,8 @@
 
      function gameOutcome(outcome, playerSelection, computerSelection) {
         if (outcome == "win") {
-     
+            // console.log(`You Win! ${playerSelection} beats ${computerSelection}`)
+
         const div = document.querySelector('div');
         const h2 = document.createElement('h2');
         h2.textContent = `You Win! ${playerSelection} beats ${computerSelection}`;
@@ -89,6 +104,7 @@
             return win = ++win;
         }
         else if (outcome == "lose"){
+            // console.log(`You Lose! ${computerSelection} beats ${playerSelection}`)
 
         const div = document.querySelector('div');
         const h2 = document.createElement('h2');
@@ -98,7 +114,7 @@
             return lose = ++lose;
         }
         else if (outcome == "tie") {
-
+            // console.log(`It's a Tie! ${playerSelection} ties with ${computerSelection}`)
 
         const div = document.querySelector('div');
         const h2 = document.createElement('h2');
@@ -128,36 +144,86 @@
         playRound(playerSelection, computerSelection);
         gameOutcome(outcome, playerSelection, computerSelection); 
 
-        const scoreBoard = document.querySelector('h4');
-        scoreBoard.textContent = `Round ${rounds}: Won ${win} | Lost ${lose} | Tied ${tie}`;
+        /* const div = document.querySelector('div');
+        const h2 = document.createElement('h2');
+        h2.textContent = `Round ${rounds}: won ${win}, lost ${lose}, tied ${tie}`;
+        div.appendChild(h2); */
 
+    
     if (rounds == 5){
 
             if (win > lose) {
+        //console.log(`You Won!: won ${win}, lost ${lose}, tied ${tie}`)
         const div = document.querySelector('div');
         const h3 = document.createElement('h3');
-        h3.textContent = `YOU WON! Won ${win} Lost ${lose} Tied ${tie}`;
+        h3.textContent = `You Won!: won ${win}, lost ${lose}, tied ${tie}`;
         div.appendChild(h3);
     }
     else if (lose > win) {
+        //console.log(`You Lost!: won ${win}, lost ${lose}, tied ${tie}`)
         const div = document.querySelector('div');
         const h3 = document.createElement('h3');
-        h3.textContent = `YOU LOST! Won ${win} Lost ${lose} Tied ${tie}`;
+        h3.textContent = `You Lost!: won ${win}, lost ${lose}, tied ${tie}`;
         div.appendChild(h3);
     }
     else if (lose == win) {
+        //console.log(`You Tied!: won ${win}, lost ${lose}, tied ${tie}`)
         const div = document.querySelector('div');
         const h3 = document.createElement('h3');
-        h3.textContent = `YOU TIED! Won ${win} Lost ${lose} Tied ${tie}`;
+        h3.textContent = `You Tied!: won ${win}, lost ${lose}, tied ${tie}`;
         div.appendChild(h3);
-
     }
     }
 
     rounds = ++rounds;
     }
-      });
+
         });
+        });
+
+   
+       
+       /* console.log(`Round ${rounds}: won ${win}, lost ${lose}, tied ${tie}`);
+
+        const div = document.querySelector('div');
+        const h2 = document.createElement('h2');
+        h2.textContent = `Round ${rounds}: won ${win}, lost ${lose}, tied ${tie}`;
+        div.appendChild(h2); */
+    
+    
+/*
+    // GAME END
+
+    if (win > lose) {
+        console.log(`You Won!: won ${win}, lost ${lose}, tied ${tie}`)
+    }
+    else if (lose > win) {
+        console.log(`You Lost!: won ${win}, lost ${lose}, tied ${tie}`)
+    }
+    else if (lose == win) {
+        console.log(`You Tied!: won ${win}, lost ${lose}, tied ${tie}`)
+    }
+
+
+    // DOM manipulation
+
+
+    const rock = document.querySelector('#rock');
+    rock.addEventListener('click', () => {
+        const playerSelection = playerPlay(playerChoice);;
+  });
+
+  const paper = document.querySelector('#paper');
+    paper.addEventListener('click', () => {
+    alert("Hello World");
+  });
+
+  const scissors = document.querySelector('#scissors');
+    scissors.addEventListener('click', () => {
+    alert("Hello World");
+  });
+
+*/
 
   </script>
 
